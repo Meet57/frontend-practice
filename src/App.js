@@ -5,9 +5,10 @@ import { SlidingComponent } from "./projects/SlidingComponent/SlidingComponent";
 import { StarRating } from "./projects/StarRating/StarRating";
 import { TicTacToe } from "./projects/TicTacToe/TicTacToe";
 import { MouseFollower } from "./projects/MouseFollower/MouseFollower";
+import { StopWatch } from "./projects/StopWatch/StopWatch";
 
 function App() {
-  const [activeProject, setActiveProject] = useState(4);
+  const [activeProject, setActiveProject] = useState(5);
 
   const projects = [
     { name: "Grid Box Generator", component: <GridBoxGenerator /> },
@@ -15,6 +16,7 @@ function App() {
     { name: "Star Rating", component: <StarRating /> },
     { name: "Tic Tac Toe", component: <TicTacToe /> },
     { name: "Mouse Follower", component: <MouseFollower /> },
+    { name: "StopWatch", component: <StopWatch /> },
   ];
 
   return (

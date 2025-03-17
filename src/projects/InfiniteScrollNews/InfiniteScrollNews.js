@@ -31,8 +31,9 @@ export const InfiniteScrollNews = () => {
     useEffect(() => {
         if (!window.location.origin.includes("localhost")) {
             setOrigin(true)
+        } else {
+            fetchNews();
         }
-        fetchNews();
     }, [fetchNews]);
 
     useEffect(() => {

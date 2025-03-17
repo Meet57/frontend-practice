@@ -10,7 +10,7 @@ import { InfiniteScroll } from "./projects/InfiniteScroll/InfiniteScroll";
 import { InfiniteScrollNews } from "./projects/InfiniteScrollNews/InfiniteScrollNews";
 
 function App() {
-  const [activeProject, setActiveProject] = useState(7);
+  const [activeProject, setActiveProject] = useState(0);
 
   const projects = [
     { name: "Grid Box Generator", component: <GridBoxGenerator /> },

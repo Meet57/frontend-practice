@@ -6,9 +6,10 @@ import { StarRating } from "./projects/StarRating/StarRating";
 import { TicTacToe } from "./projects/TicTacToe/TicTacToe";
 import { MouseFollower } from "./projects/MouseFollower/MouseFollower";
 import { StopWatch } from "./projects/StopWatch/StopWatch";
+import { InfiniteScroll } from "./projects/InfiniteScroll/InfiniteScroll";
 
 function App() {
-  const [activeProject, setActiveProject] = useState(5);
+  const [activeProject, setActiveProject] = useState(6);
 
   const projects = [
     { name: "Grid Box Generator", component: <GridBoxGenerator /> },
@@ -17,6 +18,7 @@ function App() {
     { name: "Tic Tac Toe", component: <TicTacToe /> },
     { name: "Mouse Follower", component: <MouseFollower /> },
     { name: "StopWatch", component: <StopWatch /> },
+    { name: "Infinite Scroll", component: <InfiniteScroll /> },
   ];
 
   return (

@@ -7,16 +7,17 @@ export function StarRating() {
 
   return (
     <div>
-      {[...Array(5)].map((_, index) => (
-        <Star
-          key={index}
-          isFilled={index < (hoverRating || rating)}
-          onClick={() => setRating(index + 1)}
-          onMouseEnter={() => setHoverRating(index + 1)}
-          onMouseLeave={() => setHoverRating(0)}
-        />
-      ))}
-      <br />
+      <div className="flex mt-5">
+        {[...Array(5)].map((_, index) => (
+          <Star
+            key={index}
+            isFilled={index < (hoverRating || rating)}
+            onClick={() => setRating(index + 1)}
+            onMouseEnter={() => setHoverRating(index + 1)}
+            onMouseLeave={() => setHoverRating(0)}
+          />
+        ))}
+      </div>
       Actual Rating: {rating}
     </div>
   );

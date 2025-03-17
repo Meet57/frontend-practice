@@ -29,10 +29,7 @@ export const InfiniteScroll = () => {
 
         if (observerDiv.current) observer.observe(observerDiv.current)
 
-        return () => {
-            observer.disconnect()
-
-        }
+        return () => observer.disconnect()
     }, [loading])
 
 

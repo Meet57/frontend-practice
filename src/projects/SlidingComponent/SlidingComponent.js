@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 
 export const SlidingComponent = () => {
-    const [dragging, setDragging] = useState(false); // Track if the div is being dragged
     const [position, setPosition] = useState({ x: 0, y: 0 }); // Position of the div
     const dragRef = useRef(null); // Reference to the draggable div
 
@@ -11,8 +10,6 @@ export const SlidingComponent = () => {
         const offsetY = e.clientY - position.y;
 
         const onMouseMove = (moveEvent) => {
-            setDragging(true);
-
             // Calculate new position based on mouse move
             const newX = Math.max(
                 0,
@@ -27,7 +24,6 @@ export const SlidingComponent = () => {
         };
 
         const onMouseUp = () => {
-            setDragging(false); // Stop dragging
             window.removeEventListener("mousemove", onMouseMove); // Remove mousemove listener
             window.removeEventListener("mouseup", onMouseUp); // Remove mouseup listener
         };

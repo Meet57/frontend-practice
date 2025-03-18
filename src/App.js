@@ -8,9 +8,10 @@ import { MouseFollower } from "./projects/MouseFollower/MouseFollower";
 import { StopWatch } from "./projects/StopWatch/StopWatch";
 import { InfiniteScroll } from "./projects/InfiniteScroll/InfiniteScroll";
 import { InfiniteScrollNews } from "./projects/InfiniteScrollNews/InfiniteScrollNews";
+import { Accordion } from "./projects/Accordion/Accordion";
 
 function App() {
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeProject, setActiveProject] = useState(8);
 
   const projects = [
     { name: "Grid Box Generator", component: <GridBoxGenerator /> },
@@ -20,7 +21,8 @@ function App() {
     { name: "Mouse Follower", component: <MouseFollower /> },
     { name: "StopWatch", component: <StopWatch /> },
     { name: "Infinite Scroll", component: <InfiniteScroll /> },
-    { name: "Infinite Scroll News", component: <InfiniteScrollNews /> }
+    { name: "Infinite Scroll News", component: <InfiniteScrollNews /> },
+    { name: "Accordion", component: <Accordion /> }
   ];
 
   return (

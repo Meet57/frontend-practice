@@ -26,19 +26,11 @@ export const Accordion = () => {
         <div className="w-full max-w-xl mx-auto">
             {faqs.map((faq, index) => (
                 <div key={index} className="border-b border-gray-300">
-                    <div
-                        onClick={() => toggleItem(index)}
-                        className="cursor-pointer p-4 bg-gray-100 font-semibold text-gray-900 hover:bg-gray-200"
-                    >
+                    <div onClick={() => toggleItem(index)} className="cursor-pointer p-4 bg-gray-100 font-semibold text-gray-900 hover:bg-gray-200">
                         {faq.question}
                     </div>
-                    <div
-                        className={`overflow-hidden transition-all duration-700 ease-in-out ${activeIndex === index ? 'max-h-40' : 'max-h-0'
-                            }`}
-                    >
-                        <div
-                            className={`p-4 bg-white text-gray-700`}
-                        >
+                    <div className={`overflow-hidden transition-all duration-700 ease-in-out ${activeIndex === index ? 'max-h-40' : 'max-h-0'}`}>
+                        <div className={`p-4 bg-white text-gray-700`} >
                             {faq.answer}
                         </div>
                     </div>

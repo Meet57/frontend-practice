@@ -1,24 +1,5 @@
 import React, { useState } from "react";
 
-const style = {
-    background: {
-        minHeight: "400px",
-        minWidth: "400px",
-        border: "1px solid gray",
-        borderRadius: "15px",
-        position: "relative",
-        overflow: "hidden"
-    },
-    ball: {
-        minHeight: "40px", // Increased size of the ball for visibility
-        minWidth: "40px", // Fixed typo here
-        backgroundColor: "#333",
-        position: "absolute",
-        borderRadius: "50%",
-        transition: "transform 1s ease-out", // Smooth transition for ball movement
-    },
-};
-
 export const MouseFollower = () => {
     const [ballPosition, setBallPosition] = useState({ x: 0, y: 0 });
     const divRef = React.useRef(null);
@@ -30,7 +11,7 @@ export const MouseFollower = () => {
 
             // Calculate the mouse position relative to the div
             const mouseX = e.clientX - rect.left - 20;
-            const mouseY = e.clientY - rect.top -20;
+            const mouseY = e.clientY - rect.top - 20;
 
             setBallPosition({ x: mouseX, y: mouseY });
         }
@@ -39,12 +20,14 @@ export const MouseFollower = () => {
     return (
         <div
             ref={divRef}
-            style={style.background}
+            className="min-h-[400px] min-w-[400px] border border-gray-400 rounded-lg relative overflow-hidden"
             onMouseMove={handleMouseMove}
         >
             <div
+                className="bg-gray-800 absolute rounded-full transition-transform duration-1000 ease-out"
                 style={{
-                    ...style.ball,
+                    minHeight: "40px", // Increased size of the ball for visibility
+                    minWidth: "40px", // Fixed typo here
                     left: `${ballPosition.x}px`,
                     top: `${ballPosition.y}px`,
                 }}

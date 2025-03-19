@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./TicApp.css"
 
 export const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -36,18 +35,27 @@ export const TicTacToe = () => {
   };
 
   return (
-    <div className="game">
-      <h1>Tic-Tac-Toe</h1>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold mb-4">Tic-Tac-Toe</h1>
       <Board board={board} onCellClick={handleClick} />
-      {winner && <h2>{winner === "Draw" ? "It's a Draw!" : `${winner} Wins!`}</h2>}
-      <button onClick={resetGame} className="reset-btn">Reset</button>
+      {winner && (
+        <h2 className="mt-4 text-2xl font-semibold text-green-500">
+          {winner === "Draw" ? "It's a Draw!" : `${winner} Wins!`}
+        </h2>
+      )}
+      <button
+        onClick={resetGame}
+        className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Reset
+      </button>
     </div>
   );
 };
 
 const Board = ({ board, onCellClick }) => {
   return (
-    <div className="board">
+    <div className="grid grid-cols-3 gap-2 mt-4">
       {board.map((cell, index) => (
         <Cell key={index} value={cell} onClick={() => onCellClick(index)} />
       ))}
@@ -57,7 +65,11 @@ const Board = ({ board, onCellClick }) => {
 
 const Cell = ({ value, onClick }) => {
   return (
-    <button className="cell" onClick={onClick} disabled={value !== null}>
+    <button
+      className="w-20 h-20 bg-white border-2 border-gray-300 rounded-md text-xl font-bold flex items-center justify-center hover:bg-gray-100 disabled:cursor-not-allowed"
+      onClick={onClick}
+      disabled={value !== null}
+    >
       {value}
     </button>
   );

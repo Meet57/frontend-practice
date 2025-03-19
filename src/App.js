@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css"
+import "./App.css";
 import { GridBoxGenerator } from "./projects/GridBoxGenerator/GridBoxGenerator";
 import { SlidingComponent } from "./projects/SlidingComponent/SlidingComponent";
 import { StarRating } from "./projects/StarRating/StarRating";
@@ -9,6 +9,7 @@ import { StopWatch } from "./projects/StopWatch/StopWatch";
 import { InfiniteScroll } from "./projects/InfiniteScroll/InfiniteScroll";
 import { InfiniteScrollNews } from "./projects/InfiniteScrollNews/InfiniteScrollNews";
 import { Accordion } from "./projects/Accordion/Accordion";
+import PostList from "./projects/PostList/PostList";
 
 function App() {
   const [activeProject, setActiveProject] = useState(1);
@@ -23,26 +24,29 @@ function App() {
     { name: "Infinite Scroll", component: <InfiniteScroll /> },
     { name: "Infinite Scroll News", component: <InfiniteScrollNews /> },
     { name: "Accordion", component: <Accordion /> },
+    { name: "Posts", component: <PostList /> },
   ];
 
   return (
-    <div className="App">
-      <div className="tabs">
+    <div className="App h-screen flex flex-col">
+      {/* Tabs Section with horizontal scrolling */}
+      <div className="tabs border-b border-gray-300 overflow-x-auto whitespace-nowrap flex h-10">
         {projects.map((project, index) => (
           <button
             key={index}
             onClick={() => setActiveProject(index)}
-            className={`tab ${activeProject === index ? "active" : ""}`}
+            className={`py-2 px-4 mx-2 text-sm flex-shrink-0 ${activeProject === index ? "bg-blue-600 text-white" : "bg-gray-200"
+              } hover:bg-gray-300`}
           >
             {project.name}
           </button>
         ))}
       </div>
 
-      <div className="content">
+      {/* Content Section */}
+      <div className="content flex-1 overflow-auto">
         {activeProject !== null && (
-          <div className="project-container">
-            <h2>{projects[activeProject].name}</h2>
+          <div className="project-container w-full p-6">
             {projects[activeProject].component}
           </div>
         )}

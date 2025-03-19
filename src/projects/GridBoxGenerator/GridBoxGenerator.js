@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import "./GridApp.css";
 
 export const GridBoxGenerator = () => {
     const [grid, setGrid] = useState({ row: 0, col: 0 });
@@ -24,14 +23,15 @@ export const GridBoxGenerator = () => {
     };
 
     return (
-        <div className="main">
-            <div className="form">
+        <div className="flex flex-col items-center justify-center p-4">
+            <div className="mb-4">
                 <input
                     ref={rowRef}
                     type="number"
                     value={grid.row}
                     placeholder="Rows"
                     onChange={makeTable}
+                    className="border border-gray-300 p-2 mx-2 rounded-md"
                 />
                 <input
                     ref={colRef}
@@ -39,20 +39,22 @@ export const GridBoxGenerator = () => {
                     value={grid.col}
                     placeholder="Columns"
                     onChange={makeTable}
+                    className="border border-gray-300 p-2 mx-2 rounded-md"
                 />
             </div>
 
-            <div className="grid">
+            <div className="grid grid-cols-1">
                 {numbers &&
                     Array.from({ length: grid.row }).map((_, rowIdx) => (
-                        <div key={rowIdx} className="row">
-                            {Array.from({ length: grid.col }).map(
-                                (_, colIdx) => (
-                                    <div key={colIdx} className="cellx">
-                                        {numbers[colIdx][rowIdx]}
-                                    </div>
-                                )
-                            )}
+                        <div key={rowIdx} className="flex">
+                            {Array.from({ length: grid.col }).map((_, colIdx) => (
+                                <div
+                                    key={colIdx}
+                                    className="w-12 h-12 flex items-center justify-center border border-gray-300"
+                                >
+                                    {numbers[colIdx][rowIdx]}
+                                </div>
+                            ))}
                         </div>
                     ))}
             </div>

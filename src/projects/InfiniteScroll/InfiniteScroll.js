@@ -14,7 +14,6 @@ export const InfiniteScroll = () => {
             )
             setLoading(false)
         }, 1500);
-
     }
 
     useEffect(() => {
@@ -32,21 +31,22 @@ export const InfiniteScroll = () => {
         return () => observer.disconnect()
     }, [loading])
 
-
     return (
-        <div>
-            <div>
-                Implementation of Infinite Scroll
-            </div>
-            <ul>
+        <div className="p-4">
+            <div className="text-xl font-semibold mb-4">Implementation of Infinite Scroll</div>
+            <ul className="space-y-2">
                 {items.map((item) => (
-                    <li key={item} style={{ padding: "10px", borderBottom: "1px solid #ddd" }}>
+                    <li key={item} className="p-2 border-b border-gray-300">
                         Item {item}
                     </li>
                 ))}
             </ul>
-            <div>{loading && "Loading More Content"}</div>
-            <div ref={observerDiv} style={{ height: "20px" }} />
+            {loading && (
+                <div className="text-center mt-4 text-gray-500">
+                    Loading More Content...
+                </div>
+            )}
+            <div ref={observerDiv} className="h-5"></div>
         </div>
     )
 }

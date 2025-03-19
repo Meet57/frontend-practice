@@ -1,8 +1,7 @@
 import { useState } from "react";
-import "./StarRating.css"
 
 export function StarRating() {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(-1);
   const [hoverRating, setHoverRating] = useState(0);
 
   return (
@@ -18,7 +17,7 @@ export function StarRating() {
           />
         ))}
       </div>
-      Actual Rating: {rating}
+      <div className="mt-2">Actual Rating: {rating}</div>
     </div>
   );
 }
@@ -27,7 +26,7 @@ const Star = ({ isFilled, onClick, onMouseEnter, onMouseLeave }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`star-icon ${isFilled ? "star-icon-filled" : ""}`}
+      className={`w-8 h-8 ${isFilled ? "text-yellow-400" : "text-gray-300"} cursor-pointer`}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"

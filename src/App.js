@@ -10,9 +10,10 @@ import { InfiniteScroll } from "./projects/InfiniteScroll/InfiniteScroll";
 import { InfiniteScrollNews } from "./projects/InfiniteScrollNews/InfiniteScrollNews";
 import { Accordion } from "./projects/Accordion/Accordion";
 import PostList from "./projects/PostList/PostList";
+import { ListMover } from "./projects/ListMover/ListMover";
 
 function App() {
-  const [activeProject, setActiveProject] = useState(1);
+  const [activeProject, setActiveProject] = useState(0);
 
   const projects = [
     { name: "Grid Box Generator", component: <GridBoxGenerator /> },
@@ -25,6 +26,7 @@ function App() {
     { name: "Infinite Scroll News", component: <InfiniteScrollNews /> },
     { name: "Accordion", component: <Accordion /> },
     { name: "Posts", component: <PostList /> },
+    { name: "List Mover", component: <ListMover /> },
   ];
 
   return (

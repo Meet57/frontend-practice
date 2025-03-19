@@ -9,7 +9,6 @@ import { StopWatch } from "./projects/StopWatch/StopWatch";
 import { InfiniteScroll } from "./projects/InfiniteScroll/InfiniteScroll";
 import { InfiniteScrollNews } from "./projects/InfiniteScrollNews/InfiniteScrollNews";
 import { Accordion } from "./projects/Accordion/Accordion";
-import { VirtualizedList } from "./projects/VirtualizedList/VirtualizedList";
 
 function App() {
   const [activeProject, setActiveProject] = useState(1);

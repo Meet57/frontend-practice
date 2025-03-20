@@ -11,11 +11,13 @@ import { InfiniteScrollNews } from "./projects/InfiniteScrollNews/InfiniteScroll
 import { Accordion } from "./projects/Accordion/Accordion";
 import PostList from "./projects/PostList/PostList";
 import { ListMover } from "./projects/ListMover/ListMover";
+import { DependentList } from "./projects/DependentList/DependentList";
 
 function App() {
   const [activeProject, setActiveProject] = useState(0);
 
   const projects = [
+    { name: "Dependent List", component: <DependentList /> },
     { name: "Grid Box Generator", component: <GridBoxGenerator /> },
     { name: "Sliding Component", component: <SlidingComponent /> },
     { name: "Star Rating", component: <StarRating /> },

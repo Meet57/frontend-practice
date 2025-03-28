@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { GridBoxGenerator } from "./projects/GridBoxGenerator/GridBoxGenerator";
 import { SlidingComponent } from "./projects/SlidingComponent/SlidingComponent";
 import { StarRating } from "./projects/StarRating/StarRating";
@@ -13,6 +12,7 @@ import PostList from "./projects/PostList/PostList";
 import { ListMover } from "./projects/ListMover/ListMover";
 import { DependentList } from "./projects/DependentList/DependentList";
 import { Chess } from "./projects/Chess/Chess";
+import { WordWroddle } from "./projects/WordWroddle/WordWroddle";
 
 function App() {
     const [activeProject, setActiveProject] = useState(0);
@@ -37,6 +37,7 @@ function App() {
         { name: "Sliding Component", component: <SlidingComponent /> },
         { name: "Grid Box Generator", component: <GridBoxGenerator /> },
         { name: "Chess", component: <Chess /> },
+        { name: "Word Wroddle", component: <WordWroddle /> }
     ];
 
     return (

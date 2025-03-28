@@ -50,15 +50,25 @@ export function WordWroddle() {
         newFeedbackState[attempt] = newFeedback;
         setFeedback(newFeedbackState);
 
-        if (word === target) {
+        if (word === target || attempt === 4) {
             setGameOver(true);
-            alert("🎉 You Win!");
-        } else if (attempt === 4) {
-            setGameOver(true);
-            alert(`Game Over! The correct word was: ${target}`);
         } else {
             setAttempt(attempt + 1);
         }
+    };
+
+    const restartGame = () => {
+        localStorage.removeItem("target");
+        setTarget(null);
+        setInputs(Array(5).fill("".split("")));
+        setAttempt(0);
+        setGameOver(false);
+        setFeedback(Array(5).fill(Array(5).fill("")));
+        fetchRandomWord().then((res) => {
+            const word = res.data.content.toUpperCase();
+            setTarget(word);
+            localStorage.setItem("target", word);
+        });
     };
 
     return (
@@ -80,7 +90,17 @@ export function WordWroddle() {
                     ))}
                 </div>
             ))}
-            <p className="mt-4 text-lg">Target: {gameOver ? target : "?????"}</p>
+            <p className="mt-4 text-lg">
+                {gameOver ? `Game Over! The word was: ${target}` : "?????"}
+            </p>
+            {gameOver && (
+                <button
+                    onClick={restartGame}
+                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+                >
+                    Restart Game
+                </button>
+            )}
         </div>
     );
 }

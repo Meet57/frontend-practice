@@ -5,12 +5,13 @@ export function WordWroddle() {
     const [target, setTarget] = useState(null);
     const [inputs, setInputs] = useState(
         Array(5)
-            .fill("")
+            .fill(null)
             .map(() => Array(5).fill(""))
     );
     const [attempt, setAttempt] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [feedback, setFeedback] = useState(Array(5).fill(Array(5).fill("")));
+    const [gameStarted, setGameStarted] = useState(false);
 
     useEffect(() => {
         const storedTarget = localStorage.getItem("target");
@@ -19,17 +20,20 @@ export function WordWroddle() {
                 const word = res.data.content.toUpperCase();
                 setTarget(word);
                 localStorage.setItem("target", word);
+                setGameStarted(true);
             });
         } else {
             setTarget(storedTarget.toUpperCase());
+            setGameStarted(true);
         }
     }, []);
 
     const updateInput = (row, col, value) => {
         if (gameOver || row !== attempt || !/^[a-zA-Z]?$/.test(value)) return;
 
-        let newInputs = [...inputs];
-        newInputs[row][col] = value.toUpperCase();
+        let newInputs = inputs.map((r, rowIndex) =>
+            rowIndex === row ? r.map((c, colIndex) => (colIndex === col ? value.toUpperCase() : c)) : r
+        );
         setInputs(newInputs);
 
         if (col === 4) checkWord(newInputs[row]);
@@ -46,8 +50,9 @@ export function WordWroddle() {
             else if (target.includes(word[i])) newFeedback[i] = "misplaced";
         }
 
-        let newFeedbackState = [...feedback];
-        newFeedbackState[attempt] = newFeedback;
+        let newFeedbackState = feedback.map((r, rowIndex) =>
+            rowIndex === attempt ? newFeedback : r
+        );
         setFeedback(newFeedbackState);
 
         if (word === target || attempt === 4) {
@@ -60,20 +65,22 @@ export function WordWroddle() {
     const restartGame = () => {
         localStorage.removeItem("target");
         setTarget(null);
-        setInputs(Array(5).fill("".split("")));
+        setInputs(Array(5).fill(null).map(() => Array(5).fill("")));
         setAttempt(0);
         setGameOver(false);
         setFeedback(Array(5).fill(Array(5).fill("")));
+        setGameStarted(false);
         fetchRandomWord().then((res) => {
             const word = res.data.content.toUpperCase();
             setTarget(word);
             localStorage.setItem("target", word);
+            setGameStarted(true);
         });
     };
 
     return (
         <div className="flex flex-col items-center justify-center">
-            {inputs.map((row, rowIdx) => (
+            {gameStarted && inputs.map((row, rowIdx) => (
                 <div key={rowIdx} className="flex gap-2 mb-2">
                     {row.map((letter, colIdx) => (
                         <input
@@ -91,7 +98,7 @@ export function WordWroddle() {
                 </div>
             ))}
             <p className="mt-4 text-lg">
-                {gameOver ? `Game Over! The word was: ${target}` : "?????"}
+                {gameOver ? `Game Over! The word was: ${target}` : gameStarted ? "?????" : "Loading..."}
             </p>
             {gameOver && (
                 <button

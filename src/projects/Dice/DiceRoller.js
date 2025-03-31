@@ -23,8 +23,8 @@ export const DiceRoller = () => {
             <div className="grid grid-cols-3 gap-4 p-4">
                 {
                     dices.length > 0 && (
-                        dices.map((n) =>
-                            <Dice value={n} />
+                        dices.map((n, idx) =>
+                            <Dice key={idx} value={n} />
                         )
                     )
                 }

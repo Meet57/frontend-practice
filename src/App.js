@@ -14,6 +14,8 @@ import { DependentList } from "./projects/DependentList/DependentList";
 import { Chess } from "./projects/Chess/Chess";
 import { WordWroddle } from "./projects/WordWroddle/WordWroddle";
 import { DiceRoller } from "./projects/Dice/DiceRoller";
+import { FileExplorer } from "./projects/FileExplorer/FileExplorer";
+import { Pagination } from "./projects/Pagination/Pagination";
 
 function App() {
     const [activeProject, setActiveProject] = useState(0);
@@ -39,7 +41,9 @@ function App() {
         { name: "Grid Box Generator", component: <GridBoxGenerator /> },
         { name: "Chess", component: <Chess /> },
         { name: "Word Wroddle", component: <WordWroddle /> },
-        { name: "Dice Roller", component: <DiceRoller /> }
+        { name: "Dice Roller", component: <DiceRoller /> },
+        { name: "File Explorer", component: <FileExplorer /> },
+        { name: "Pagination", component: <Pagination /> }
     ];
 
     return (

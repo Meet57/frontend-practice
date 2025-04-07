@@ -34,7 +34,7 @@ export const Pagination = () => {
                 {
                     Array.from({ length: Math.ceil(max / 10) }).map((_, idx) => {
                         return (
-                            <div onClick={() => updatePagination(idx + 1)} key={idx + 1} className={`${idx + 1 === page ? "border-blue-900 border-2" : "text-black"} text-center h-10 w-10 text-sm cursor-pointer border p-2 rounded`}>
+                            <div onClick={() => updatePagination(idx + 1)} key={idx + 1} className={`${idx + 1 === page && "border-blue-900 border-2 font-bold"} flex justify-center items-center h-10 w-10 text-sm cursor-pointer border p-2 rounded`}>
                                 {idx + 1}
                             </div>
                         )
@@ -56,7 +56,6 @@ export const Pagination = () => {
         </div>
     )
 }
-
 
 const ProductCard = ({ product }) => {
     return (

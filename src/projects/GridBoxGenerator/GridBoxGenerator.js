@@ -17,7 +17,6 @@ export const GridBoxGenerator = () => {
             let a = arr.slice(i * rowValue, i * rowValue + rowValue);
             return i % 2 === 0 ? a : a.reverse();
         });
-        console.log(subArray);
 
         setNumbers(subArray);
     };

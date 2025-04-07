@@ -1,9 +1,16 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export const StopWatch = () => {
     const [time, setTime] = useState({ h: 0, m: 0, s: 0 })
     const [isRunning, setIsRunning] = useState(false)
     const interval = useRef(null)
+
+    useEffect(() => {
+        return () => {
+            clearInterval(interval.current)
+        }
+    }, [])
+
 
     const controlTimer = () => {
         if (!isRunning) {

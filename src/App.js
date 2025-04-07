@@ -16,6 +16,9 @@ import { WordWroddle } from "./projects/WordWroddle/WordWroddle";
 import { DiceRoller } from "./projects/Dice/DiceRoller";
 import { FileExplorer } from "./projects/FileExplorer/FileExplorer";
 import { Pagination } from "./projects/Pagination/Pagination";
+import { TrafficLight } from "./projects/TrafficLight/TrafficLight";
+import { NestedCheckboxes } from "./projects/NestedCheckboxes/NestedCheckboxes";
+import Chess2 from "./projects/Chess2/Chess2";
 
 function App() {
     const [activeProject, setActiveProject] = useState(0);
@@ -27,24 +30,27 @@ function App() {
     }, [])
 
     const projects = [
-        { name: "Star Rating", component: <StarRating /> },
-        { name: "Accordion", component: <Accordion /> },
-        { name: "StopWatch", component: <StopWatch /> },
-        { name: "Mouse Follower", component: <MouseFollower /> },
-        { name: "Tic Tac Toe", component: <TicTacToe /> },
-        { name: "Dependent List", component: <DependentList /> },
-        { name: "List Mover", component: <ListMover /> },
-        { name: "Posts", component: <PostList /> },
-        { name: "Infinite Scroll", component: <InfiniteScroll /> },
-        { name: "Infinite Scroll News", component: <InfiniteScrollNews /> },
-        { name: "Sliding Component", component: <SlidingComponent /> },
-        { name: "Grid Box Generator", component: <GridBoxGenerator /> },
-        { name: "Chess", component: <Chess /> },
-        { name: "Word Wroddle", component: <WordWroddle /> },
-        { name: "Dice Roller", component: <DiceRoller /> },
-        { name: "File Explorer", component: <FileExplorer /> },
-        { name: "Pagination", component: <Pagination /> }
-    ];
+        { "name": "Star Rating", "component": <StarRating /> },
+        { "name": "Accordion", "component": <Accordion /> },
+        { "name": "StopWatch", "component": <StopWatch /> },
+        { "name": "Mouse Follower", "component": <MouseFollower /> },
+        { "name": "Traffic Light", "component": <TrafficLight /> },
+        { "name": "List Mover", "component": <ListMover /> },
+        { "name": "Dependent List", "component": <DependentList /> },
+        { "name": "Nested Checkboxes", "component": <NestedCheckboxes /> },
+        { "name": "Pagination", "component": <Pagination /> },
+        { "name": "Dice Roller", "component": <DiceRoller /> },
+        { "name": "Tic Tac Toe", "component": <TicTacToe /> },
+        { "name": "Word Wroddle", "component": <WordWroddle /> },
+        { "name": "Sliding Component", "component": <SlidingComponent /> },
+        { "name": "Grid Box Generator", "component": <GridBoxGenerator /> },
+        { "name": "Infinite Scroll", "component": <InfiniteScroll /> },
+        { "name": "Infinite Scroll News", "component": <InfiniteScrollNews /> },
+        { "name": "Posts", "component": <PostList /> },
+        { "name": "File Explorer", "component": <FileExplorer /> },
+        { "name": "Chess", "component": <Chess /> },
+        { "name": "Chess2", "component": <Chess2 /> }
+    ]
 
     return (
         <div className="App h-screen flex flex-col">
